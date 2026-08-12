@@ -1,4 +1,4 @@
-# Event-scale prediction of sediment hysteresis regimes using hydrological and spatial indices
+# Bimodal predictability of suspended sediment hysteresis direction from landscape and hydrological data enables spatially targeted catchment management
 
 [![DOI](https://zenodo.org/badge/DOI/PLACEHOLDER.svg)](https://doi.org/PLACEHOLDER)
 
@@ -6,7 +6,7 @@
 
 This repository contains the code and data associated with:
 
-> Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026). Event-scale prediction of sediment hysteresis regimes using hydrological and spatial indices. *Journal of Hydrology* (in review).
+> Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026). Bimodal predictability of suspended sediment hysteresis direction from landscape and hydrological data enables spatially targeted catchment management. *Journal of Hydrology* (in review).
 
 The study predicts suspended sediment hysteresis direction from readily available discharge records and static geospatial indices, without requiring continuous suspended sediment concentration monitoring. The analysis covers 678 enrichment events across eight monitoring sites in five sub-catchments of the Waihi Estuary catchment, Bay of Plenty, New Zealand.
 
