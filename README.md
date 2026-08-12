@@ -113,4 +113,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ## Contact
 
-James Dare — james.d@aquawatchsolutions.com
+James Dare — jd227@students.waikato.ac.nz
