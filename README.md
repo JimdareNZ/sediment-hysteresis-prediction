@@ -1,6 +1,6 @@
 # Bimodal predictability of suspended sediment hysteresis direction from landscape and hydrological data enables spatially targeted catchment management
 
-[![DOI](https://zenodo.org/badge/DOI/PLACEHOLDER.svg)](https://doi.org/PLACEHOLDER)
+[![DOI](https://zenodo.org/badge/1318867872.svg)](https://doi.org/10.5281/zenodo.21899318)
 
 ## Overview
 
