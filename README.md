@@ -1,22 +1,10 @@
-<<<<<<< HEAD
 # Bimodal predictability of suspended sediment hysteresis direction from landscape and hydrological data enables spatially targeted catchment management
 
 [![DOI](https://zenodo.org/badge/1318867872.svg)](https://doi.org/10.5281/zenodo.21899318)
-=======
-# Bimodal predictability of suspended sediment hysteresis direction
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21899319.svg)](https://doi.org/10.5281/zenodo.21899319)
->>>>>>> d38a29f (Add sensitivity analyses, nested LOSO, load partitioning, and updated outputs)
 
 Code and data accompanying:
 
-> Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026). Bimodal predictability of suspended sediment hysteresis direction from landscape and hydrological data enables spatially targeted catchment management. *Journal of Hydrology*.
-
-<<<<<<< HEAD
 > Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026). Bimodal predictability of suspended sediment hysteresis direction from landscape and hydrological data enables spatially targeted catchment management. *Journal of Hydrology* (in review).
-=======
-Code and data archive: [10.5281/zenodo.21899319](https://doi.org/10.5281/zenodo.21899319)
->>>>>>> d38a29f (Add sensitivity analyses, nested LOSO, load partitioning, and updated outputs)
 
 The study predicts suspended sediment hysteresis direction from discharge records and static geospatial indices, without requiring continuous suspended sediment concentration monitoring. It covers eight monitoring sites in five sub-catchments of the Waihi Estuary catchment, Bay of Plenty, New Zealand.
 
