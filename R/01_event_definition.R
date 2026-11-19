@@ -14,12 +14,13 @@
 #   6. Export individual event CSVs for subsequent analysis
 #
 # Inputs:
-#   - ANN-derived TSS CSV file with columns: Time, DISC, TURB, .pred
+#   - data/raw/<site>_TSS_Final.csv: ANN-derived TSS with columns Time, DISC,
+#     TURB, .pred (not archived in this repository)
 #   - Site-specific eventMinima parameters (delta.y, delta.x, threshold)
 #
 # Outputs:
-#   - One CSV per event in the site output folder
-#   - One PNG per event showing the hydrograph with baseflow
+#   - results/events/<site>_Events/Event_<i>.csv (one CSV per event)
+#   - results/events/<site>_Events/Event_<i>.png (hydrograph with baseflow)
 #
 # Notes:
 #   - This script is run once per site. Change the site_name variable below
@@ -33,8 +34,10 @@
 #   tidyverse, hydroEvents, zoo, padr
 #
 # Reference:
-#   Dare et al. (2026). Event-scale prediction of sediment hysteresis
-#   regimes using hydrological and spatial indices. Journal of Hydrology.
+#   Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026). Bimodal
+#   predictability of suspended sediment hysteresis direction from landscape
+#   and hydrological data enables spatially targeted catchment management.
+#   Journal of Hydrology. https://doi.org/10.5281/zenodo.21899319 (code)
 # ══════════════════════════════════════════════════════════════════════════════
 
 library(tidyverse)
@@ -69,7 +72,7 @@ event_params <- list(
 # Paths
 # -------------------------
 input_file  <- file.path("data", "raw", paste0(site_name, "_TSS_Final.csv"))
-output_dir  <- file.path("output", "events", paste0(site_name, "_Events"))
+output_dir  <- file.path("results", "events", paste0(site_name, "_Events"))
 
 # -------------------------
 # 1. Load and prepare data

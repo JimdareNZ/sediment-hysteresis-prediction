@@ -4,7 +4,7 @@
 # Figure 5: PCA biplots (PC1 vs PC2, PC3 vs PC4) — main text
 # Figures S1-S2: Supplementary PCA biplots (PC1 vs PC3, PC1 vs PC4)
 #
-# Input:  output/pca_results.rds (from 05_pca_analysis.R)
+# Input:  results/pca_results.rds (from 05_pca_analysis.R)
 # Output:
 #   figures/Fig5_PCA_Combined.png
 #   figures/FigS1_PCA_PC1_PC3.png
@@ -18,7 +18,7 @@ library(cowplot)
 # =========================================================================
 # 1. Load PCA results
 # =========================================================================
-pca_data   <- readRDS("output/pca_results.rds")
+pca_data   <- readRDS("results/pca_results.rds")
 pca_result <- pca_data$pca_result
 df_pca     <- pca_data$df_pca
 var_exp    <- pca_data$var_exp

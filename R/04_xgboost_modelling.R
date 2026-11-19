@@ -13,12 +13,12 @@
 #     "fig_eight" — class II (CW) vs class III (ACW), n = 451
 #
 # Inputs:
-#   - data/Final_Hysteresis_Dataset_Spatial_Ante.csv
+#   - data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv
 #
 # Outputs:
-#   - output/models/<subset>_figure_data.rds (ROC, AUC, confusion, importance)
-#   - output/models/<subset>_final_fit.rds
-#   - output/models/<subset>_workflow.rds
+#   - results/models/<subset>_figure_data.rds (ROC, AUC, confusion, importance)
+#   - results/models/<subset>_final_fit.rds
+#   - results/models/<subset>_workflow.rds
 #
 # Notes:
 #   - Load_kg, Yield_kg_ha, and Load_kg_prev are excluded from the predictor
@@ -29,8 +29,10 @@
 #   tidymodels, xgboost, vip, dials
 #
 # Reference:
-#   Dare et al. (2026). Event-scale prediction of sediment hysteresis
-#   regimes using hydrological and spatial indices. Journal of Hydrology.
+#   Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026). Bimodal
+#   predictability of suspended sediment hysteresis direction from landscape
+#   and hydrological data enables spatially targeted catchment management.
+#   Journal of Hydrology. https://doi.org/10.5281/zenodo.21899319 (code)
 # ══════════════════════════════════════════════════════════════════════════════
 
 library(tidymodels)
@@ -45,13 +47,13 @@ tidymodels_prefer()
 # =========================================================================
 class_subset <- "all"  # Options: "all", "pure", "fig_eight"
 
-output_dir <- "output/models"
-if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
+output_dir <- "results/models"
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 # =========================================================================
 # 1. Load and prepare data
 # =========================================================================
-raw <- read.csv("data/Final_Hysteresis_Dataset_Spatial_Ante.csv",
+raw <- read.csv("data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv",
                 stringsAsFactors = FALSE)
 
 # Predictor groups (Load_kg, Yield_kg_ha, Load_kg_prev excluded)

@@ -5,7 +5,12 @@
 # contrasting regimes. Left panels: hydrograph + sedigraph. Right panels:
 # normalised Q-TSS hysteresis loop.
 #
-# Inputs: Individual event CSVs from 01_event_definition.R
+# Inputs: Four event CSVs from 01_event_definition.R, archived in
+#         data/fig2_events/ (columns used: Time, DISC, .pred):
+#           Event_84_E.csv  Kokako (MGT),    class I
+#           Event_4.csv     Pipi (PUN),      class I
+#           Event_19.csv    Kotuku (WHR-D),  class IV
+#           Event_8.csv     Inanga (PKO-UW), class IV
 # Output: figures/Fig2_Hysteresis_Examples.png
 # ══════════════════════════════════════════════════════════════════════════════
 
@@ -17,14 +22,14 @@ library(scales)
 # -------------------------
 # Load representative events
 # -------------------------
-kokako <- read_csv("output/events/Kokako_Events/Event_84_E.csv") %>%
+kokako <- read_csv("data/fig2_events/Event_84_E.csv") %>%
   mutate(Site = "MGT", Direction = "Clockwise")
-pipi <- read_csv("output/events/Pipi_Events/Event_4.csv") %>%
+pipi <- read_csv("data/fig2_events/Event_4.csv") %>%
   mutate(Site = "PUN", Direction = "Clockwise") %>%
   slice(-(1:16))
-kotuku <- read_csv("output/events/Kotuku_Events/Event_19.csv") %>%
+kotuku <- read_csv("data/fig2_events/Event_19.csv") %>%
   mutate(Site = "WHR-D", Direction = "Anticlockwise")
-inanga <- read_csv("output/events/Inanga_Events/Event_8.csv") %>%
+inanga <- read_csv("data/fig2_events/Event_8.csv") %>%
   mutate(Site = "PKO-UW", Direction = "Anticlockwise")
 
 # -------------------------

@@ -23,11 +23,11 @@
 #   - data/Final_Hysteresis_Dataset_Ante.csv (from 02_event_analysis.R)
 #
 # Outputs:
-#   - output/spatial/Land_Use2021_Indices_Subcatchment.csv
-#   - output/spatial/SEI_Subcatchment.csv
-#   - output/spatial/Flow_Path_Subcatchment.csv
-#   - output/spatial/Biophysical_sed_risk.csv
-#   - data/Final_Hysteresis_Dataset_Spatial_Ante.csv (final merged dataset)
+#   - results/spatial/Land_Use2021_Indices_Subcatchment.csv
+#   - results/spatial/SEI_Subcatchment.csv
+#   - results/spatial/Flow_Path_Subcatchment.csv
+#   - results/spatial/Biophysical_sed_risk.csv
+#   - data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv (final merged dataset)
 #
 # Notes:
 #   - Geospatial source datasets are not redistributed in this repository.
@@ -40,8 +40,10 @@
 #   sf, tidyverse
 #
 # Reference:
-#   Dare et al. (2026). Event-scale prediction of sediment hysteresis
-#   regimes using hydrological and spatial indices. Journal of Hydrology.
+#   Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026). Bimodal
+#   predictability of suspended sediment hysteresis direction from landscape
+#   and hydrological data enables spatially targeted catchment management.
+#   Journal of Hydrology. https://doi.org/10.5281/zenodo.21899319 (code)
 # ══════════════════════════════════════════════════════════════════════════════
 
 library(sf)
@@ -56,8 +58,8 @@ shp_flow_path      <- "data/shapefiles/LWS_Physiographics/FSL_Flow_Path.shp"
 shp_biophysical    <- "data/shapefiles/biophysical_risk/waihi_pong_sediment.shp"
 shp_sub_catchments <- "data/shapefiles/waihi_estuary/WaihiEstuaryCatchmentsGenerated_MonitoringSitesSubset_JD_25052022.shp"
 
-output_dir <- "output/spatial"
-if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
+output_dir <- "results/spatial"
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 # -------------------------
 # Site name mapping (sub-catchment ID → anonymised site name)
@@ -254,8 +256,8 @@ Hys_dat <- read.csv("data/Final_Hysteresis_Dataset_Ante.csv", check.names = FALS
 Hys_dat <- merge(Hys_dat, Combined_Spatial, by.x = "Site", by.y = "SiteID")
 
 write.csv(Hys_dat,
-          file = "data/Final_Hysteresis_Dataset_Spatial_Ante.csv",
+          file = "data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv",
           row.names = FALSE)
 
 cat("Spatial predictor derivation complete.\n")
-cat("Final dataset saved: data/Final_Hysteresis_Dataset_Spatial_Ante.csv\n")
+cat("Final dataset saved: data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv\n")

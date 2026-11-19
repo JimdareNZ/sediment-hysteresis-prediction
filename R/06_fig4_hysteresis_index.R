@@ -3,14 +3,14 @@
 # ══════════════════════════════════════════════════════════════════════════════
 # Figure 4: Violin plots of continuous hysteresis index h across sites.
 #
-# Input:  data/Final_Hysteresis_Dataset_Spatial_Ante.csv
+# Input:  data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv
 # Output: figures/Fig4_Hysteresis_Index_Distribution.png
 # ══════════════════════════════════════════════════════════════════════════════
 
 library(ggplot2)
 library(tidyverse)
 
-df <- read_csv("data/Final_Hysteresis_Dataset_Spatial_Ante.csv")
+df <- read_csv("data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv")
 
 df <- df %>%
   mutate(

@@ -1,0 +1,211 @@
+"feature","importance","scenario","subset","rank"
+"vQ_mm",0.117744798651241,"Original","full",1
+"Q_peak",0.102706665229151,"Original","full",2
+"QCI",0.0965929505314765,"Original","full",3
+"Slope",0.0732538497130996,"Original","full",4
+"VQ_m3",0.069743860587844,"Original","full",5
+"baseflow_index",0.0658858497755015,"Original","full",6
+"VQ_m3_prev",0.0571512049808325,"Original","full",7
+"Q_peak_prev",0.0560726260385379,"Original","full",8
+"symmetry_index",0.0558183724375878,"Original","full",9
+"dt_prev_event_h",0.0406724436171975,"Original","full",10
+"vQ_mm",0.081993541309852,"Original","pure",1
+"symmetry_index",0.0797564644024286,"Original","pure",2
+"Q_peak_prev",0.0689786899400383,"Original","pure",3
+"Slope",0.0670047452378279,"Original","pure",4
+"QCI",0.0665143956950166,"Original","pure",5
+"dt_prev_event_h",0.0608207867066381,"Original","pure",6
+"Q_peak",0.0549477014528003,"Original","pure",7
+"baseflow_index",0.053485618014013,"Original","pure",8
+"VQ_m3",0.0482768428293611,"Original","pure",9
+"VQ_m3_prev",0.047494615659988,"Original","pure",10
+"vQ_mm",0.357276998637538,"Original","fig8",1
+"Q_peak",0.160814714509496,"Original","fig8",2
+"rising_time_h",0.123787470161257,"Original","fig8",3
+"VQ_m3",0.0729973254459502,"Original","fig8",4
+"baseflow_index",0.0396968557427383,"Original","fig8",5
+"duration_h",0.0300172893121741,"Original","fig8",6
+"VQ_m3_prev",0.0243694406024933,"Original","fig8",7
+"Slope",0.0240020741878978,"Original","fig8",8
+"QCI",0.0211575946249728,"Original","fig8",9
+"n_obs",0.0198415784848433,"Original","fig8",10
+"vQ_mm",0.110001867456403,"CCI equal","full",1
+"Q_peak",0.104519516464657,"CCI equal","full",2
+"QCI",0.0934709153060404,"CCI equal","full",3
+"VQ_m3",0.0679792038173343,"CCI equal","full",4
+"baseflow_index",0.0674313993839246,"CCI equal","full",5
+"Slope",0.0655431598547939,"CCI equal","full",6
+"VQ_m3_prev",0.0566916920354065,"CCI equal","full",7
+"symmetry_index",0.0544269949799794,"CCI equal","full",8
+"Q_peak_prev",0.0528840461635077,"CCI equal","full",9
+"dt_prev_event_h",0.0418732734275503,"CCI equal","full",10
+"Slope",0.0837298930102531,"CCI equal","pure",1
+"vQ_mm",0.0772934761919392,"CCI equal","pure",2
+"Q_peak_prev",0.0769393228065084,"CCI equal","pure",3
+"symmetry_index",0.069550817386212,"CCI equal","pure",4
+"baseflow_index",0.0586161662978599,"CCI equal","pure",5
+"Q_peak",0.0579931373888572,"CCI equal","pure",6
+"QCI",0.0551725453186639,"CCI equal","pure",7
+"dt_prev_event_h",0.0520592183708332,"CCI equal","pure",8
+"recession_k_per_h",0.0494744425799275,"CCI equal","pure",9
+"recession_time_h",0.0493438773852738,"CCI equal","pure",10
+"vQ_mm",0.319019710402603,"CCI equal","fig8",1
+"Q_peak",0.168157539687303,"CCI equal","fig8",2
+"rising_time_h",0.113202661993985,"CCI equal","fig8",3
+"VQ_m3",0.0839496565584231,"CCI equal","fig8",4
+"baseflow_index",0.0617155461993774,"CCI equal","fig8",5
+"CCI",0.0359188923334796,"CCI equal","fig8",6
+"QCI",0.0245794022648695,"CCI equal","fig8",7
+"n_obs",0.0244131433780436,"CCI equal","fig8",8
+"duration_h",0.0223430209248996,"CCI equal","fig8",9
+"Slope",0.0203277565144851,"CCI equal","fig8",10
+"vQ_mm",0.114835482770192,"CCI reversed","full",1
+"Q_peak",0.102753610253736,"CCI reversed","full",2
+"QCI",0.100519606102502,"CCI reversed","full",3
+"Slope",0.0740889293189511,"CCI reversed","full",4
+"VQ_m3",0.0688136101504171,"CCI reversed","full",5
+"baseflow_index",0.0653416476170044,"CCI reversed","full",6
+"Q_peak_prev",0.0581797858746093,"CCI reversed","full",7
+"VQ_m3_prev",0.0563694412980514,"CCI reversed","full",8
+"symmetry_index",0.0508661813669863,"CCI reversed","full",9
+"dt_prev_event_h",0.041072414104046,"CCI reversed","full",10
+"QCI",0.0897590837232111,"CCI reversed","pure",1
+"vQ_mm",0.0800560499752865,"CCI reversed","pure",2
+"Q_peak_prev",0.0767028769262347,"CCI reversed","pure",3
+"symmetry_index",0.0710348892922982,"CCI reversed","pure",4
+"Slope",0.066155356412108,"CCI reversed","pure",5
+"baseflow_index",0.0641104250134236,"CCI reversed","pure",6
+"dt_prev_event_h",0.0600188126763974,"CCI reversed","pure",7
+"VQ_m3",0.0571331807290133,"CCI reversed","pure",8
+"Q_peak",0.0452272762237341,"CCI reversed","pure",9
+"VQ_m3_prev",0.0443915338170019,"CCI reversed","pure",10
+"vQ_mm",0.348424267835093,"CCI reversed","fig8",1
+"Q_peak",0.138527584959054,"CCI reversed","fig8",2
+"rising_time_h",0.114626807047397,"CCI reversed","fig8",3
+"VQ_m3",0.0951006675145306,"CCI reversed","fig8",4
+"baseflow_index",0.0408853667131932,"CCI reversed","fig8",5
+"duration_h",0.0351829695058047,"CCI reversed","fig8",6
+"QCI",0.034032419092396,"CCI reversed","fig8",7
+"n_obs",0.022668244627718,"CCI reversed","fig8",8
+"Slope",0.0208875336638237,"CCI reversed","fig8",9
+"recession_time_h",0.0195845816881633,"CCI reversed","fig8",10
+"vQ_mm",0.114823033722197,"LUSP equal","full",1
+"Q_peak",0.105315994970318,"LUSP equal","full",2
+"QCI",0.0911835420299242,"LUSP equal","full",3
+"Slope",0.0728936335093059,"LUSP equal","full",4
+"VQ_m3",0.0706909112888267,"LUSP equal","full",5
+"baseflow_index",0.0693774318965671,"LUSP equal","full",6
+"Q_peak_prev",0.055526493413855,"LUSP equal","full",7
+"VQ_m3_prev",0.0541161336942908,"LUSP equal","full",8
+"symmetry_index",0.0487231743933637,"LUSP equal","full",9
+"dt_prev_event_h",0.0411333332039033,"LUSP equal","full",10
+"vQ_mm",0.0801975759958613,"LUSP equal","pure",1
+"Q_peak_prev",0.0795076297192097,"LUSP equal","pure",2
+"symmetry_index",0.0738644858314799,"LUSP equal","pure",3
+"QCI",0.0631331473718161,"LUSP equal","pure",4
+"VQ_m3",0.059540486751584,"LUSP equal","pure",5
+"Slope",0.059233843961961,"LUSP equal","pure",6
+"dt_prev_event_h",0.058700757266155,"LUSP equal","pure",7
+"baseflow_index",0.0578927434063956,"LUSP equal","pure",8
+"recession_time_h",0.0530192459630115,"LUSP equal","pure",9
+"recession_k_per_h",0.050944682812276,"LUSP equal","pure",10
+"vQ_mm",0.350088043799926,"LUSP equal","fig8",1
+"Q_peak",0.139547408244249,"LUSP equal","fig8",2
+"rising_time_h",0.125467042762735,"LUSP equal","fig8",3
+"VQ_m3",0.106340470664593,"LUSP equal","fig8",4
+"QCI",0.0345184155454553,"LUSP equal","fig8",5
+"duration_h",0.0329571864652424,"LUSP equal","fig8",6
+"baseflow_index",0.0268264498828766,"LUSP equal","fig8",7
+"LUSP",0.0212940546015668,"LUSP equal","fig8",8
+"VQ_m3_prev",0.0203143415179858,"LUSP equal","fig8",9
+"Slope",0.0201992856288506,"LUSP equal","fig8",10
+"vQ_mm",0.113647920163997,"LUSP steep","full",1
+"Q_peak",0.103435408699143,"LUSP steep","full",2
+"QCI",0.0911388341265218,"LUSP steep","full",3
+"Slope",0.0730926222691225,"LUSP steep","full",4
+"VQ_m3",0.0699128848216265,"LUSP steep","full",5
+"baseflow_index",0.0646418639004406,"LUSP steep","full",6
+"Q_peak_prev",0.0561775916293939,"LUSP steep","full",7
+"VQ_m3_prev",0.054927537447856,"LUSP steep","full",8
+"symmetry_index",0.0527992253150663,"LUSP steep","full",9
+"dt_prev_event_h",0.0415620937392676,"LUSP steep","full",10
+"QCI",0.0962650181353974,"LUSP steep","pure",1
+"vQ_mm",0.0792529905438236,"LUSP steep","pure",2
+"symmetry_index",0.0753855067567692,"LUSP steep","pure",3
+"Q_peak_prev",0.0728091570159159,"LUSP steep","pure",4
+"VQ_m3",0.0587125905631897,"LUSP steep","pure",5
+"dt_prev_event_h",0.0586563763692227,"LUSP steep","pure",6
+"Slope",0.0579098456506168,"LUSP steep","pure",7
+"recession_k_per_h",0.0540047312934583,"LUSP steep","pure",8
+"baseflow_index",0.0506543592455765,"LUSP steep","pure",9
+"recession_time_h",0.0471496670265416,"LUSP steep","pure",10
+"vQ_mm",0.334710796616523,"LUSP steep","fig8",1
+"Q_peak",0.177350327958013,"LUSP steep","fig8",2
+"rising_time_h",0.122690027075791,"LUSP steep","fig8",3
+"VQ_m3",0.10216437177734,"LUSP steep","fig8",4
+"baseflow_index",0.0378309232041163,"LUSP steep","fig8",5
+"QCI",0.0364802503602526,"LUSP steep","fig8",6
+"n_obs",0.0202691707757922,"LUSP steep","fig8",7
+"duration_h",0.019511956958609,"LUSP steep","fig8",8
+"VQ_m3_prev",0.0184989831974862,"LUSP steep","fig8",9
+"Slope",0.0142107855992435,"LUSP steep","fig8",10
+"vQ_mm",0.112036897145549,"Both equal","full",1
+"Q_peak",0.107071392563452,"Both equal","full",2
+"QCI",0.0865964140262411,"Both equal","full",3
+"Slope",0.0713913021235577,"Both equal","full",4
+"baseflow_index",0.0658680075437546,"Both equal","full",5
+"VQ_m3",0.0656410935748921,"Both equal","full",6
+"VQ_m3_prev",0.0589697906152574,"Both equal","full",7
+"Q_peak_prev",0.054637325374758,"Both equal","full",8
+"symmetry_index",0.0524053100943734,"Both equal","full",9
+"dt_prev_event_h",0.040416583173072,"Both equal","full",10
+"symmetry_index",0.0836335308543261,"Both equal","pure",1
+"vQ_mm",0.0813963418563439,"Both equal","pure",2
+"Slope",0.0765870676682174,"Both equal","pure",3
+"Q_peak_prev",0.0692236671994542,"Both equal","pure",4
+"baseflow_index",0.0571922817874086,"Both equal","pure",5
+"dt_prev_event_h",0.0560692343620847,"Both equal","pure",6
+"Q_peak",0.0553316410723802,"Both equal","pure",7
+"recession_k_per_h",0.0520605267411703,"Both equal","pure",8
+"VQ_m3",0.050998174274171,"Both equal","pure",9
+"recession_time_h",0.0505608507397056,"Both equal","pure",10
+"vQ_mm",0.365343773845422,"Both equal","fig8",1
+"Q_peak",0.140552643056293,"Both equal","fig8",2
+"rising_time_h",0.11963797207826,"Both equal","fig8",3
+"VQ_m3",0.0634398005601746,"Both equal","fig8",4
+"Slope",0.0372719805278317,"Both equal","fig8",5
+"baseflow_index",0.0326169206725284,"Both equal","fig8",6
+"duration_h",0.0307441904776004,"Both equal","fig8",7
+"QCI",0.024767714123789,"Both equal","fig8",8
+"RB_flashiness",0.0215793097375783,"Both equal","fig8",9
+"CCI",0.0208160148997302,"Both equal","fig8",10
+"vQ_mm",0.118703220929385,"Both adversarial","full",1
+"Q_peak",0.102422829513673,"Both adversarial","full",2
+"QCI",0.092250768374248,"Both adversarial","full",3
+"Slope",0.0751617489410171,"Both adversarial","full",4
+"VQ_m3",0.0671314514508758,"Both adversarial","full",5
+"baseflow_index",0.0671285768171134,"Both adversarial","full",6
+"Q_peak_prev",0.0545284877620328,"Both adversarial","full",7
+"symmetry_index",0.0538227449863233,"Both adversarial","full",8
+"VQ_m3_prev",0.0537891214610797,"Both adversarial","full",9
+"dt_prev_event_h",0.0412163333519282,"Both adversarial","full",10
+"Slope",0.0879578922354202,"Both adversarial","pure",1
+"Q_peak_prev",0.0761755298477748,"Both adversarial","pure",2
+"vQ_mm",0.0734340198810613,"Both adversarial","pure",3
+"symmetry_index",0.0707636380313288,"Both adversarial","pure",4
+"Q_peak",0.0674220975197978,"Both adversarial","pure",5
+"baseflow_index",0.0639768200124405,"Both adversarial","pure",6
+"QCI",0.059277540895025,"Both adversarial","pure",7
+"dt_prev_event_h",0.0575680408021144,"Both adversarial","pure",8
+"recession_time_h",0.05085810500862,"Both adversarial","pure",9
+"recession_k_per_h",0.0480197398782198,"Both adversarial","pure",10
+"vQ_mm",0.37017722236604,"Both adversarial","fig8",1
+"Q_peak",0.147238188471286,"Both adversarial","fig8",2
+"rising_time_h",0.109227074899213,"Both adversarial","fig8",3
+"VQ_m3",0.0878348693056158,"Both adversarial","fig8",4
+"baseflow_index",0.0397803330501311,"Both adversarial","fig8",5
+"Slope",0.0261975776723562,"Both adversarial","fig8",6
+"QCI",0.024102291173729,"Both adversarial","fig8",7
+"n_obs",0.0212408926140069,"Both adversarial","fig8",8
+"recession_time_h",0.0210339093889187,"Both adversarial","fig8",9
+"duration_h",0.0206125800645912,"Both adversarial","fig8",10

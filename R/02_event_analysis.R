@@ -18,7 +18,7 @@
 #   5. Merge and export the final dataset
 #
 # Inputs:
-#   - Event CSVs from 01_event_definition.R (one per event per site)
+#   - results/events/<site>_Events/*.csv from 01_event_definition.R
 #   - functions.R (shared utility functions including Zuecco classification)
 #
 # Outputs:
@@ -29,8 +29,10 @@
 #   tidyverse, lubridate, purrr
 #
 # Reference:
-#   Dare et al. (2026). Event-scale prediction of sediment hysteresis
-#   regimes using hydrological and spatial indices. Journal of Hydrology.
+#   Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026). Bimodal
+#   predictability of suspended sediment hysteresis direction from landscape
+#   and hydrological data enables spatially targeted catchment management.
+#   Journal of Hydrology. https://doi.org/10.5281/zenodo.21899319 (code)
 # ══════════════════════════════════════════════════════════════════════════════
 
 library(tidyverse)
@@ -46,14 +48,14 @@ source("R/functions.R")
 
 site_config <- tibble::tribble(
   ~site_name, ~event_folder,       ~area_ha,
-  "Tuangi",   "output/events/Tuangi_Events",   9461.728,
-  "Kokako",   "output/events/Kokako_Events",   1132.848,
-  "Kokopu",   "output/events/Kokopu_Events",   5378.934,
-  "Kotuku",   "output/events/Kotuku_Events",   3246.450,
-  "Matata",   "output/events/Matata_Events",   9976.359,
-  "Pipi",     "output/events/Pipi_Events",     1319.197,
-  "Tuna",     "output/events/Tuna_Events",     4182.178,
-  "Inanga",   "output/events/Inanga_Events",   3317.304
+  "Tuangi",   "results/events/Tuangi_Events",   9461.728,
+  "Kokako",   "results/events/Kokako_Events",   1132.848,
+  "Kokopu",   "results/events/Kokopu_Events",   5378.934,
+  "Kotuku",   "results/events/Kotuku_Events",   3246.450,
+  "Matata",   "results/events/Matata_Events",   9976.359,
+  "Pipi",     "results/events/Pipi_Events",     1319.197,
+  "Tuna",     "results/events/Tuna_Events",     4182.178,
+  "Inanga",   "results/events/Inanga_Events",   3317.304
 )
 
 cat("Reading events from all sites...\n")

@@ -5,7 +5,7 @@
 # importance) for the pure unidirectional model (I vs IV).
 # Also generates supplementary Figures S3 (all classes) and S4 (figure-eight).
 #
-# Inputs: output/models/*_figure_data.rds (from 04_xgboost_modelling.R)
+# Inputs: results/models/*_figure_data.rds (from 04_xgboost_modelling.R)
 # Outputs:
 #   figures/Fig6_Model_Results.png
 #   figures/FigS3_AllClasses_Model_Results.png
@@ -17,9 +17,9 @@ library(tidyverse)
 library(cowplot)
 
 # ── Load model outputs ────────────────────────────────────────────────────────
-full_data <- readRDS("output/models/all_classes_figure_data.rds")
-pure_data <- readRDS("output/models/pure_I_vs_IV_figure_data.rds")
-fig8_data <- readRDS("output/models/fig_eight_II_vs_III_figure_data.rds")
+full_data <- readRDS("results/models/all_classes_figure_data.rds")
+pure_data <- readRDS("results/models/pure_I_vs_IV_figure_data.rds")
+fig8_data <- readRDS("results/models/fig_eight_II_vs_III_figure_data.rds")
 
 # ── Feature groups and labels ─────────────────────────────────────────────────
 hydrological <- c(

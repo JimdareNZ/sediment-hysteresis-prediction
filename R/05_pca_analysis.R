@@ -6,19 +6,21 @@
 #   spatial predictor indices, with ANOVA tests for hysteresis direction
 #   and sub-catchment effects on PC1-PC4.
 #
-# Outputs:
-#   - output/pca_results.rds (PCA object, scores, variance explained)
-#   - Printed ANOVA summary for Table S6
-#
 # Inputs:
-#   - data/Final_Hysteresis_Dataset_Spatial_Ante.csv
+#   - data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv
+#
+# Outputs:
+#   - results/pca_results.rds (PCA object, scores, variance explained)
+#   - Printed ANOVA summary for Table S6
 #
 # Dependencies:
 #   tidyverse
 #
 # Reference:
-#   Dare et al. (2026). Event-scale prediction of sediment hysteresis
-#   regimes using hydrological and spatial indices. Journal of Hydrology.
+#   Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026). Bimodal
+#   predictability of suspended sediment hysteresis direction from landscape
+#   and hydrological data enables spatially targeted catchment management.
+#   Journal of Hydrology. https://doi.org/10.5281/zenodo.21899319 (code)
 # ══════════════════════════════════════════════════════════════════════════════
 
 library(tidyverse)
@@ -26,7 +28,7 @@ library(tidyverse)
 # =========================================================================
 # 1. Load and prepare data
 # =========================================================================
-df <- read_csv("data/Final_Hysteresis_Dataset_Spatial_Ante.csv")
+df <- read_csv("data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv")
 
 df <- df %>%
   mutate(
@@ -123,12 +125,12 @@ print(summary_table, width = Inf)
 # =========================================================================
 # 4. Save results for figure generation
 # =========================================================================
-dir.create("output", showWarnings = FALSE)
+dir.create("results", showWarnings = FALSE)
 
 saveRDS(
   list(pca_result = pca_result, df_pca = df_pca, var_exp = var_exp),
-  file = "output/pca_results.rds"
+  file = "results/pca_results.rds"
 )
 
-cat("\nPCA results saved to output/pca_results.rds\n")
+cat("\nPCA results saved to results/pca_results.rds\n")
 cat("PCA analysis complete.\n")

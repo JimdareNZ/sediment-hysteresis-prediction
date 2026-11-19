@@ -1,67 +1,112 @@
 # ══════════════════════════════════════════════════════════════════════════════
 # 06_fig3_class_distribution.R
 # ══════════════════════════════════════════════════════════════════════════════
-# Figure 3: Percentage distribution of hysteresis classes across all sites.
+# Figure 3: Percentage distribution of hysteresis classes across all sites,
+# weighted by event count (left panel) and event sediment load (right panel).
+# The load-weighted panel was added in response to Reviewer 1, Comment 1.
 #
-# Input:  data/Final_Hysteresis_Dataset_Spatial_Ante.csv
+# Input:  data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv
 # Output: figures/Fig3_Hysteresis_Class_Distribution.png
 # ══════════════════════════════════════════════════════════════════════════════
 
-library(ggplot2)
 library(tidyverse)
 
-df <- read_csv("data/Final_Hysteresis_Dataset_Spatial_Ante.csv")
+# ── 1. Load data ─────────────────────────────────────────────────────────────
+raw <- read.csv("data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv",
+                stringsAsFactors = FALSE)
 
-df <- df %>%
-  mutate(Site_Code = case_when(
-    Site == "Tuangi" ~ "PKO-D",  Site == "Inanga" ~ "PKO-UW",
-    Site == "Kokopu" ~ "PKO-UE", Site == "Kokako" ~ "MGT",
-    Site == "Pipi"   ~ "PUN",    Site == "Kotuku" ~ "WHR-D",
-    Site == "Matata" ~ "PNG-M",  Site == "Tuna"   ~ "PNG-TR1"
-  ))
-
-site_order <- c("PKO-D", "PKO-UW", "PKO-UE", "MGT", "PUN", "WHR-D", "PNG-M", "PNG-TR1")
-df <- df %>% mutate(Site_Code = factor(Site_Code, levels = site_order))
-
-class_labels <- c(
-  "1" = "Class I (Clockwise)",          "2" = "Class II (Mixed, CW dominant)",
-  "3" = "Class III (Mixed, ACW dominant)", "4" = "Class IV (Anticlockwise)",
-  "5" = "Class V (Dilution, CW)",       "6" = "Class VI (Dilution, Mixed CW)",
-  "7" = "Class VII (Dilution, Mixed ACW)", "8" = "Class VIII (Dilution, ACW)"
+# ── 2. Site mapping (field names → manuscript site codes) ────────────────────
+site_lookup <- tribble(
+  ~Site,     ~site_code, ~sub_catchment,
+  "Tuangi",  "PKO-D",    "Pokopoko",
+  "Inanga",  "PKO-UW",   "Pokopoko",
+  "Kokopu",  "PKO-UE",   "Pokopoko",
+  "Kokako",  "MGT",      "Mangatoetoe",
+  "Pipi",    "PUN",      "Puanene",
+  "Kotuku",  "WHR-D",    "Wharere",
+  "Matata",  "PNG-M",    "Pongakawa",
+  "Tuna",    "PNG-TR1",  "Pongakawa"
 )
 
+site_order <- c("PKO-D", "PKO-UW", "PKO-UE",
+                "PNG-M", "PNG-TR1",
+                "MGT", "PUN", "WHR-D")
+
+# ── 3. Prepare data ─────────────────────────────────────────────────────────
+dat <- raw |>
+  left_join(site_lookup, by = "Site") |>
+  filter(!is.na(Zuec_class), !is.na(site_code)) |>
+  mutate(
+    class_label = factor(paste0("Class ", as.roman(Zuec_class)),
+                         levels = paste0("Class ", as.roman(1:8))),
+    site_code   = factor(site_code, levels = site_order)
+  )
+
+# ── 4. Count-weighted and load-weighted proportions ─────────────────────────
+count_props <- dat |>
+  group_by(site_code, class_label) |>
+  summarise(value = n(), .groups = "drop_last") |>
+  mutate(total = sum(value), pct = 100 * value / total,
+         weight_type = "Event count") |>
+  ungroup()
+
+load_props <- dat |>
+  group_by(site_code, class_label) |>
+  summarise(value = sum(Load_kg, na.rm = TRUE), .groups = "drop_last") |>
+  mutate(total = sum(value), pct = 100 * value / total,
+         weight_type = "Sediment load") |>
+  ungroup()
+
+panel_levels <- c("Event count", "Sediment load")
+
+combined <- bind_rows(count_props, load_props) |>
+  mutate(weight_type = factor(weight_type, levels = panel_levels))
+
+# ── 5. Bar labels: n (count panel) and total load in t (load panel) ──────────
+bar_labels <- bind_rows(
+  count_props |> distinct(site_code, total, weight_type) |>
+    mutate(label = paste0("n = ", total)),
+  load_props  |> distinct(site_code, total, weight_type) |>
+    mutate(label = paste0(round(total / 1000), " t"))
+) |>
+  mutate(weight_type = factor(weight_type, levels = panel_levels))
+
+# ── 6. Colour scheme: red → blue for enrichment I–IV, greys for dilution ─────
 class_colours <- c(
-  "1" = "#d73027", "2" = "#f4a582", "3" = "#92c5de", "4" = "#2166ac",
-  "5" = "#b8b8b8", "6" = "#969696", "7" = "#737373", "8" = "#525252"
+  "Class I"    = "#D73027", "Class II"   = "#FC8D59",
+  "Class III"  = "#91BFDB", "Class IV"   = "#4575B4",
+  "Class V"    = "#BDBDBD", "Class VI"   = "#969696",
+  "Class VII"  = "#737373", "Class VIII" = "#525252"
 )
 
-df_summary <- df %>%
-  filter(!is.na(Zuec_class), !is.na(Site_Code)) %>%
-  mutate(Zuec_class = as.character(Zuec_class)) %>%
-  group_by(Site_Code, Zuec_class) %>%
-  summarise(n = n(), .groups = "drop") %>%
-  group_by(Site_Code) %>%
-  mutate(total = sum(n), prop = n / total) %>%
-  ungroup() %>%
-  mutate(Zuec_class = factor(Zuec_class, levels = as.character(1:8)))
-
-site_n <- df_summary %>% group_by(Site_Code) %>% summarise(total = first(total))
-
-fig3 <- ggplot(df_summary, aes(x = Site_Code, y = prop, fill = Zuec_class)) +
-  geom_bar(stat = "identity", width = 0.7, colour = "white", linewidth = 0.3) +
-  geom_text(data = site_n, aes(x = Site_Code, y = 1.04, label = paste0("n=", total)),
-            inherit.aes = FALSE, size = 3, vjust = 0) +
-  scale_fill_manual(values = class_colours, labels = class_labels, name = "Hysteresis class") +
-  scale_y_continuous(labels = scales::percent_format(accuracy = 1),
-                     limits = c(0, 1.1), breaks = seq(0, 1, 0.25), expand = c(0, 0)) +
-  labs(x = "Monitoring site", y = "Percentage of events (%)") +
-  theme_bw() +
-  theme(panel.grid.major.x = element_blank(), panel.grid.minor = element_blank(),
-        axis.text = element_text(size = 9), axis.title = element_text(size = 10),
-        legend.position = "right", legend.title = element_text(size = 9, face = "bold"),
-        legend.text = element_text(size = 8), legend.key.size = unit(0.5, "cm"),
-        plot.background = element_rect(fill = "white", colour = NA))
+# ── 7. Plot ──────────────────────────────────────────────────────────────────
+fig3 <- ggplot(combined, aes(x = site_code, y = pct, fill = class_label)) +
+  geom_col(position = "stack", width = 0.8, colour = "white", linewidth = 0.2) +
+  geom_text(data = bar_labels,
+            aes(x = site_code, y = 103, label = label),
+            inherit.aes = FALSE, size = 2.8, vjust = 0) +
+  facet_wrap(~ weight_type) +
+  scale_fill_manual(values = class_colours, name = "Hysteresis class") +
+  scale_y_continuous(limits = c(0, 112), breaks = seq(0, 100, 25),
+                     expand = c(0, 0)) +
+  labs(x = NULL, y = "Proportion (%)") +
+  theme_bw(base_size = 11) +
+  theme(
+    axis.text.x        = element_text(angle = 45, hjust = 1, size = 8),
+    legend.position    = "bottom",
+    legend.title       = element_text(size = 9),
+    legend.text        = element_text(size = 8),
+    strip.text         = element_text(size = 10, face = "bold"),
+    panel.grid.major.x = element_blank(),
+    plot.background    = element_rect(fill = "white", colour = NA)
+  )
 
 dir.create("figures", showWarnings = FALSE)
 ggsave("figures/Fig3_Hysteresis_Class_Distribution.png", fig3,
-       dpi = 300, width = 10, height = 6, units = "in", bg = "white")
+       width = 8, height = 4.5, dpi = 300, bg = "white")
+
+# ── 8. Summary table of load-weighted proportions (reported in Section 4.3) ──
+load_props |>
+  select(site_code, class_label, pct) |>
+  pivot_wider(names_from = class_label, values_from = pct, values_fill = 0) |>
+  print(width = Inf)

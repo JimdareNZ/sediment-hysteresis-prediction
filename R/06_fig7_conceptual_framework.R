@@ -4,7 +4,8 @@
 # Figure 7: Conceptual framework linking landscape controls to hysteresis
 # regime and management responses.
 #
-# Output: figures/Fig7_Conceptual_Framework.png
+# Input:  none (diagram is defined in this script)
+# Output: figures/Fig7_Conceptual_Framework.png (and .svg)
 # Dependencies: DiagrammeR, DiagrammeRsvg, rsvg
 # ══════════════════════════════════════════════════════════════════════════════
 

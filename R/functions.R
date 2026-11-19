@@ -17,6 +17,10 @@
 #     Hyst_Indicies()            — Lloyd HI and flushing index
 #     Calc_Hysteresis_Indices()  — Wrapper to classify all events
 #
+# Inputs:  none (sourced by 01_event_definition.R and 02_event_analysis.R)
+# Outputs: none directly; Event_Modifier() writes event CSV/PNG files to the
+#          folder supplied by 01_event_definition.R
+#
 # References:
 #   Zuecco, G., Penna, D., Borga, M., & van Meerveld, H.J. (2016).
 #     A versatile index to characterize hysteresis between hydrological

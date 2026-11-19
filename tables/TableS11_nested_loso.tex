@@ -1,0 +1,17 @@
+\begin{table}[H]
+\centering
+\caption{Leave-one-site-out (LOSO) performance with hyperparameters tuned on the full dataset (original, as in Table 5 of the main text) and with hyperparameters re-tuned within each LOSO training fold (nested). In the nested scheme, the held-out site was excluded from both tuning and fitting. Values are means across held-out sites; F1 is calculated with clockwise as the positive class.}
+\label{tab:nested_loso}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{3}{c}{Original LOSO} & \multicolumn{3}{c}{Nested LOSO} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Class subset & ROC AUC & Accuracy & F1 & ROC AUC & Accuracy & F1 \\
+\midrule
+All classes (I+II vs III+IV) & 0.619 & 0.561 & 0.337 & 0.607 & 0.566 & 0.384 \\
+Pure (I vs IV) & 0.792 & 0.710 & 0.578 & 0.775 & 0.668 & 0.539 \\
+Figure-eight (II vs III) & 0.525 & 0.553 & 0.273 & 0.537 & 0.556 & 0.363 \\
+\bottomrule
+\end{tabular}
+\end{table}
