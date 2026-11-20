@@ -27,8 +27,9 @@ The study predicts suspended sediment hysteresis direction from discharge record
 │   ├── 07_table4_load_partitioning.R
 │   ├── 08_sensitivity_label_perturbation.R
 │   ├── 09_sensitivity_weighting.R
-│   └── 10_SI_sensitivity_figures.R
-├── results/        # intermediate outputs; includes archived sensitivity results
+│   ├── 10_SI_sensitivity_figures.R
+│   └── 11_nested_loso.R
+├── results/        # intermediate outputs; includes archived sensitivity and nested LOSO results
 ├── figures/        # figure outputs
 └── tables/         # LaTeX table outputs
 ```
@@ -92,15 +93,20 @@ Site names in the dataset are anonymised field names. They map to the manuscript
 | `08_sensitivity_label_perturbation.R` | Label-flip sensitivity of LOSO performance | `results/sensitivity_results.csv`, `results/sensitivity_summary.csv` |
 | `09_sensitivity_weighting.R` | CCI/LUSP weighting sensitivity | `results/weighting_sensitivity_results.csv`, `results/weighting_sensitivity_importance.csv` |
 | `10_SI_sensitivity_figures.R` | SI sensitivity figures from the archived results | Figs. S5–S6 |
+| `11_nested_loso.R` | Nested leave-one-site-out CV, with hyperparameters re-tuned within each LOSO training fold | `results/nested_loso_results.csv`, `results/nested_loso_summary.csv`, `results/nested_loso_hyperparameters.csv`, Table S11 |
 
 Output files:
 
 - Main text: `figures/Fig1_Catchment_Map.png`, `Fig2_Hysteresis_Examples.png`, `Fig3_Hysteresis_Class_Distribution.png`, `Fig4_Hysteresis_Index_Distribution.png`, `Fig5_PCA_Combined.png`, `Fig6_Model_Results.png`, `Fig7_Conceptual_Framework.png`; `tables/Table4_Load_By_Direction.tex`
-- SI: `figures/FigS1_PCA_PC1_PC3.png`, `FigS2_PCA_PC1_PC4.png`, `FigS3_AllClasses_Model_Results.png`, `FigS4_FigureEight_Model_Results.png`, `FigS5_sensitivity.png`, `FigS6_weighting_sensitivity.png`
+- SI: `figures/FigS1_PCA_PC1_PC3.png`, `FigS2_PCA_PC1_PC4.png`, `FigS3_AllClasses_Model_Results.png`, `FigS4_FigureEight_Model_Results.png`, `FigS5_sensitivity.png`, `FigS6_weighting_sensitivity.png`; `tables/TableS11_nested_loso.tex`
+
+### Nested cross-validation
+
+In `04_xgboost_modelling.R`, hyperparameters are tuned by 5-fold cross-validation on the full dataset before LOSO evaluation, so each held-out site contributes to hyperparameter selection. `11_nested_loso.R` repeats the same tuning procedure (same grid, parameter ranges, seeds and selection metric) inside each LOSO training fold, so the held-out site contributes to neither tuning nor fitting. It reports nested LOSO performance alongside the original values (Table S11).
 
 ### What can be run from this repository alone
 
-Scripts 04–05, 06 (Figs. 2–7), 07 and 10 run directly from the archived data and results. Scripts 01–03 and Fig. 1 also need raw inputs that are not redistributed:
+Scripts 04–05, 06 (Figs. 2–7), 07, 10 and 11 run directly from the archived data and results. Scripts 01–03 and Fig. 1 also need raw inputs that are not redistributed:
 
 - **01–02** need the ANN-derived TSS and discharge time series (`data/raw/<site>_TSS_Final.csv`). These are described in the companion paper: [Dare et al. (2026), *Scientific Reports*](https://doi.org/10.1038/s41598-026-43915-9).
 - **03 and Fig. 1** need the geospatial shapefiles listed below, placed under `data/shapefiles/`.
@@ -108,8 +114,9 @@ Scripts 04–05, 06 (Figs. 2–7), 07 and 10 run directly from the archived data
 
 ## Runtime and reproducibility
 
-- `08_sensitivity_label_perturbation.R` takes about **8 hours**; `09_sensitivity_weighting.R` takes about **7 minutes**. All other scripts take minutes or less.
-- The sensitivity results in `results/` were generated before a random seed was fixed. Scripts 08 and 09 now call `set.seed(2026)`, so reruns are reproducible but will differ slightly from the medians reported in the manuscript. The archived CSVs in `results/` reproduce the reported values exactly, and `10_SI_sensitivity_figures.R` reads them directly. Rerunning 08 or 09 overwrites the archived CSVs, so back them up first.
+- `08_sensitivity_label_perturbation.R` takes about **8 hours**; `11_nested_loso.R` takes about **2 hours**; `09_sensitivity_weighting.R` takes about **7 minutes**. All other scripts take minutes or less.
+- `11_nested_loso.R` caches each completed outer fold in `results/nested_loso_cache/` (not archived), so an interrupted run resumes where it stopped. Delete this folder before a fresh run.
+- The sensitivity results in `results/` were generated before a random seed was fixed. Scripts 08 and 09 now call `set.seed(2026)`, so reruns are reproducible but will differ slightly from the medians reported in the manuscript. The archived CSVs in `results/` reproduce the reported values exactly, and `10_SI_sensitivity_figures.R` reads them directly. Rerunning 08, 09 or 11 overwrites the archived CSVs, so back them up first.
 
 ## Requirements
 
@@ -141,7 +148,7 @@ Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026).
 Bimodal predictability of suspended sediment hysteresis direction from
 landscape and hydrological data enables spatially targeted catchment
 management. Journal of Hydrology. Code and data:
-https://doi.org/10.5281/zenodo.21899319
+https://doi.org/10.5281/zenodo.21899318
 ```
 
 ## License
