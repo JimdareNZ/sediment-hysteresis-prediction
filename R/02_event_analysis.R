@@ -32,7 +32,7 @@
 #   Dare, J.E., Özkundakci, D., McDowell, R.W., & Hussain, E. (2026). Bimodal
 #   predictability of suspended sediment hysteresis direction from landscape
 #   and hydrological data enables spatially targeted catchment management.
-#   Journal of Hydrology. https://doi.org/10.5281/zenodo.21899319 (code)
+#   Journal of Hydrology. https://doi.org/10.5281/zenodo.21899318 (code)
 # ══════════════════════════════════════════════════════════════════════════════
 
 library(tidyverse)

@@ -78,7 +78,7 @@ Site names in the dataset are anonymised field names. They map to the manuscript
 |---|---|---|
 | `functions.R` | Event definition helpers, hydrograph metrics, Zuecco (2016) and Lloyd (2016) hysteresis indices | — |
 | `01_event_definition.R` | Event identification with hydroEvents plus interactive manual refinement (run once per site) | `results/events/` |
-| `02_event_analysis.R` | Hydrograph metrics, hysteresis classification and antecedent indices | `data/Final_Hysteresis_Dataset_Ante.csv` |
+| `02_event_analysis.R` | Hydrograph metrics, hysteresis classification and antecedent indices | `data/Final_Hysteresis_Dataset.csv`, `data/Final_Hysteresis_Dataset_Ante.csv` |
 | `03_spatial_predictors.R` | Spatial predictor indices from national geospatial datasets, merged with the event data | `results/spatial/`, `data/Final_Hysteresis_Dataset_Spatial_Ante_Final.csv` |
 | `04_xgboost_modelling.R` | XGBoost classification (tidymodels), 5-fold CV and leave-one-site-out CV; run once per class subset (`all`, `pure`, `fig_eight`) | `results/models/` |
 | `05_pca_analysis.R` | PCA and ANOVA tests | `results/pca_results.rds`, Table S6 (console) |
@@ -106,7 +106,7 @@ In `04_xgboost_modelling.R`, hyperparameters are tuned by 5-fold cross-validatio
 
 ### What can be run from this repository alone
 
-Scripts 04–05, 06 (Figs. 2–7), 07, 10 and 11 run directly from the archived data and results. Scripts 01–03 and Fig. 1 also need raw inputs that are not redistributed:
+Scripts 04–05, 06 (Figs. 2, 3, 4 and 7), 07, 10 and 11 run directly from the archived data and results. Figs. 5 and 6 (and Figs. S1–S4) need 05 and 04 to be run first, because they read `results/pca_results.rds` and `results/models/*.rds`, which are not archived. Scripts 01–03 and Fig. 1 also need raw inputs that are not redistributed:
 
 - **01–02** need the ANN-derived TSS and discharge time series (`data/raw/<site>_TSS_Final.csv`). These are described in the companion paper: [Dare et al. (2026), *Scientific Reports*](https://doi.org/10.1038/s41598-026-43915-9).
 - **03 and Fig. 1** need the geospatial shapefiles listed below, placed under `data/shapefiles/`.
